@@ -54,8 +54,8 @@ public class kassenbonmain {
 								Bestand = Integer.parseInt(attribute.getTextContent());
 							}
 							//Element attribute = (Element) Attribute;
-							//System.out.println(id + attribute.getTagName() + "=" + attribute.getTextContent());*/
-						}
+							//System.out.println(id + attribute.getTagName() + "=" + attribute.getTextContent());
+						}*/
 					}
 				}
 			}
