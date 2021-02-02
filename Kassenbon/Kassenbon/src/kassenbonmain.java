@@ -36,7 +36,11 @@ public class kassenbonmain {
 					for(int j=0; j<ArtAttributes.getLength(); j++) {
 						System.out.println(j);
 						Node Attribute = ArtAttributes.item(j);
-						if(Attribute.getNodeType() == Node.ELEMENT_NODE) {
+						
+						Artikelname = ArtAttributes.getElement(Artikelname);
+						Preis = ArtAttributes.getElement(Preis);
+						Bestand = ArtAttributes.getElement(Bestand);
+						/*if(Attribute.getNodeType() == Node.ELEMENT_NODE) {
 							Element attribute = (Element) Attribute;
 							if(j == 1) {
 								Artikelname = attribute.getTextContent();
@@ -50,7 +54,7 @@ public class kassenbonmain {
 								Bestand = Integer.parseInt(attribute.getTextContent());
 							}
 							//Element attribute = (Element) Attribute;
-							//System.out.println(id + attribute.getTagName() + "=" + attribute.getTextContent());
+							//System.out.println(id + attribute.getTagName() + "=" + attribute.getTextContent());*/
 						}
 					}
 				}
