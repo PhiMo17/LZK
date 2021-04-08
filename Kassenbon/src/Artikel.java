@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+
+import javax.swing.*;
 
 public class Artikel {
 	private int id;

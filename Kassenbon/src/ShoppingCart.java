@@ -5,14 +5,30 @@ public class ShoppingCart {
 	private double Preis;
 	private int	InCard;
 	private double Gross;
+	protected double Net;
+	protected double MwSt;
 	
-	public ShoppingCart(int id, String Artikelname, double Preis, int InCard, double gross) {
+	public ShoppingCart(int id, String artikelname, double preis, int inCard) {
 		this.id = id;
-		this.Artikelname = Artikelname;
-		this.Preis = Preis;
-		this.InCard = InCard;
-		this.Gross = Gross;
-		
+		this.Artikelname = artikelname;
+		this.Preis = preis;
+		this.InCard = inCard;		
+	}
+
+	public double getMwSt() {
+		return MwSt;
+	}
+
+	public void setMwSt(double mwSt) {
+		MwSt = Net * 0.19;
+	}
+
+	public double getNet() {
+		return Net;
+	}
+
+	public void setNet(double net) {
+		Net = Gross / 1.19;
 	}
 
 	public double getGross() {
@@ -56,5 +72,9 @@ public class ShoppingCart {
 	}
 	
 	
+	
+	static void Begrüßung() {
+		System.out.println("Spieleladen Vinke\n\nDennis Vinke\nNilay-Benli-Straße\n30489 Niklashausen");
+	}
 	
 }
