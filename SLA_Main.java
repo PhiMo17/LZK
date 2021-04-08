@@ -30,11 +30,13 @@ public class SLA_Main {
 		}
 		
 		for(Artikel artikel: ArtikelAL) {
-			int input = Integer.parseInt(JOptionPane.showInputDialog(f , artikel.getArtikelname() + " " +artikel.getPreis()));
+			int input = Integer.parseInt(JOptionPane.showInputDialog(f , artikel.getArtikelname() + "\n" + artikel.getPreis() + "€"));
 			if(input > 0) {
 				shoppingCart.add(new ShoppingCart(artikel.getId(), artikel.getArtikelname(), artikel.getPreis(), input));
 			}
 		}
+		for(ShoppingCart shoppingCartitem: shoppingCart) {
+			System.out.println(shoppingCartitem.getArtikelname() + "\n" + shoppingCartitem.getInCard()+" Stk." +"\n Preis: " + shoppingCartitem.getPreis() + "\n Netto: " + shoppingCartitem.getNet() + "\n Mwst: " + shoppingCartitem.getMwSt() + "\n Brutto: " + shoppingCartitem.getGross());
+		}
 	}
-
 }

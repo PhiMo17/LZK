@@ -46,4 +46,9 @@ public class Artikel {
 	public void setBestand(int bestand) {
 		Bestand = bestand;
 	}
+	/*public void returnArtikelListe() {
+		JFrame f;
+		f = new JFrame();
+		int input = Integer.parseInt(JOptionPane.showInputDialog(f , Artikelname + "\n" + Preis + "€"));
+	}*/
 }

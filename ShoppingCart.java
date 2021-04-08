@@ -12,7 +12,10 @@ public class ShoppingCart {
 		this.id = id;
 		this.Artikelname = artikelname;
 		this.Preis = preis;
-		this.InCard = inCard;		
+		this.InCard = inCard;
+		this.Gross = preis * inCard;
+		this.Net = Gross / 1.19;
+		this.MwSt = Net * 0.19;
 	}
 
 	public double getMwSt() {
@@ -20,7 +23,7 @@ public class ShoppingCart {
 	}
 
 	public void setMwSt(double mwSt) {
-		MwSt = Net * 0.19;
+		MwSt = mwSt;
 	}
 
 	public double getNet() {
@@ -28,7 +31,7 @@ public class ShoppingCart {
 	}
 
 	public void setNet(double net) {
-		Net = Gross / 1.19;
+		Net = net;
 	}
 
 	public double getGross() {
@@ -36,7 +39,7 @@ public class ShoppingCart {
 	}
 
 	public void setGross(double gross) {
-		Gross = Preis * InCard;
+		Gross = gross;
 	}
 
 	public int getId() {
