@@ -1,14 +1,19 @@
 import java.util.ArrayList;
 import javax.swing.*;
 import java.util.Scanner;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 public class SLA_Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		DecimalFormat df2 = new DecimalFormat("#.##");
 		JFrame f;
 		f = new JFrame();
+		double grossTotal = 0;
+		double netTotal = 0;
+		double mwStTotal = 0;	
 		
 		
 		ArrayList<Artikel> ArtikelAL = new ArrayList<Artikel>();
@@ -32,11 +37,19 @@ public class SLA_Main {
 		for(Artikel artikel: ArtikelAL) {
 			int input = Integer.parseInt(JOptionPane.showInputDialog(f , artikel.getArtikelname() + "\n" + artikel.getPreis() + "€"));
 			if(input > 0) {
+				if(input > artikel.getBestand()) {
+					break;
+				}
 				shoppingCart.add(new ShoppingCart(artikel.getId(), artikel.getArtikelname(), artikel.getPreis(), input));
 			}
 		}
 		for(ShoppingCart shoppingCartitem: shoppingCart) {
-			System.out.println(shoppingCartitem.getArtikelname() + "\n" + shoppingCartitem.getInCard()+" Stk." +"\n Preis: " + shoppingCartitem.getPreis() + "\n Netto: " + shoppingCartitem.getNet() + "\n Mwst: " + shoppingCartitem.getMwSt() + "\n Brutto: " + shoppingCartitem.getGross());
+			System.out.println(shoppingCartitem.getArtikelname() + " x " + shoppingCartitem.getInCard()+" Stk." + "\t" + shoppingCartitem.getGross() + "€");
+			grossTotal += shoppingCartitem.getGross();
+			netTotal += shoppingCartitem.getNet();
+			mwStTotal += shoppingCartitem.getMwSt();
 		}
+		System.out.println(df2.format(grossTotal) + "€\n" + df2.format(netTotal) + "€\n" + df2.format(mwStTotal) + "€");
+		
 	}
 }
