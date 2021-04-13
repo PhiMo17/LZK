@@ -42,8 +42,12 @@ public class Article {
 	}
 
 	public void setStock(int stock) {
-		this.stock = stock;
+		this.stock -= stock;
 	}
 	
-	
+	public void restock() {
+		if(stock < 5) {
+			System.out.println(articleName + " has to be reordered.\nCurrent stock: " + stock + "\n");
+		}
+	}
 }

@@ -13,10 +13,6 @@ public class CartItem {
 		this.gross = inCart * article.getPrice();
 		this.net = gross / 1.19;
 		this.taxes = net * 0.19;
-		
-		/*if(inCart > article.getStock()) {
-			throw new Exception("Not enough items in stock.");
-		}*/
 	}
 
 	public Article getArticle() {
