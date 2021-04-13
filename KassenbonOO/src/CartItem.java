@@ -7,7 +7,7 @@ public class CartItem {
 	private double taxes;
 	private double net;
 	
-	public CartItem(Article article, int inCart) throws Exception {
+	public CartItem(Article article, int inCart) {
 		this.article = article;
 		this.inCart = inCart;
 		this.gross = inCart * article.getPrice();

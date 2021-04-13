@@ -22,16 +22,13 @@ public class Main {
 		articles.add(new Article(7, "Cybernico 2077 PS4", 50, 20));
 		
 		
-		System.out.println(shoppingCart.get(0));
-		System.out.println("HalloWelt");
-		
 		for(Article items : articles) {
 			System.out.println(items);
 			//System.out.println(items.getArticleName());
 			int input = Integer.parseInt(JOptionPane.showInputDialog(f , items.getArticleName() + "\n" + items.getPrice() + "€"));
 			if(input > 0) {
-				//shoppingCart.add(new CartItem(, input));
-				System.out.println("Hallo Welt");
+				shoppingCart.add(new CartItem(items, input));
+				
 			}
 		}
 		for(CartItem items: shoppingCart) {
