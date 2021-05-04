@@ -6,13 +6,14 @@ public class CartItem {
 	private double gross;
 	private double taxes;
 	private double net;
+	private double taxrate = 1.19;
 	
 	public CartItem(Article article, int inCart) {
 		this.article = article;
 		this.inCart = inCart;
 		this.gross = inCart * article.getPrice();
-		this.net = gross / 1.19;
-		this.taxes = net * 0.19;
+		this.net = gross / taxrate;
+		this.taxes = gross - net ;
 	}
 
 	public Article getArticle() {

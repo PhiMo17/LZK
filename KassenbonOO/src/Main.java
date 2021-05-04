@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import javax.swing.*;
 
-
 public class Main {
 
 	public static void main(String[] args) {
@@ -12,12 +11,19 @@ public class Main {
 		
 		ArrayList<Article> articles = new ArrayList<Article>();
 		ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
-		//Create a aricles(plural) class containing the AL articles?
-		//This may also be more in line with the SLA principle.
-		//It would also negate the need for another loop around lines 29-33
-		//I could also implement the restock method in there eliminating most of lines 40-
 		
-		
+		createArticles(articles);
+		articlesToCart(f, articles, cartItems);
+		ShoppingCart shoppingCart = new ShoppingCart(cartItems);
+		shoppingCart.printBill();
+		restockItems(articles);
+	}
+
+
+
+
+
+	private static void createArticles(ArrayList<Article> articles) {
 		articles.add(new Article(1, "New Silvan Turbo", 7.5, 20));
 		articles.add(new Article(2, "Afrim und Bashkim", 6, 20));
 		articles.add(new Article(3, "Daniel allein zu Haus", 4.5, 20));
@@ -25,8 +31,9 @@ public class Main {
 		articles.add(new Article(5, "Call of Duty - Phillips War PS4", 40, 20));
 		articles.add(new Article(6, "Cybernico 2077 PC", 40, 20));
 		articles.add(new Article(7, "Cybernico 2077 PS4", 50, 20));
-		
-		
+	}
+
+	private static void articlesToCart(JFrame f, ArrayList<Article> articles, ArrayList<CartItem> cartItems) {
 		for(Article article : articles) {
 			int input = Integer.parseInt(JOptionPane.showInputDialog(f , article.getArticleName() + "\n" + article.getPrice() + "€"));		
 			if(input > 0) {
@@ -34,12 +41,14 @@ public class Main {
 			}
 			article.setStock(input);
 		}
-		ShoppingCart shoppingCart = new ShoppingCart(cartItems);
-		shoppingCart.returnBill();
-		
+	}
+	
+	private static void restockItems(ArrayList<Article> articles) {
 		System.out.println("\nHello Dennis,following items need to be restocked:");
 		for(Article article : articles) {
-			article.restock();
+			article.restockItem();
 		}
 	}
+
+
 }
