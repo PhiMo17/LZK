@@ -1,5 +1,6 @@
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class Article {
 
@@ -7,12 +8,14 @@ public class Article {
 	private String articleName;
 	private double price;
 	private int stock;
+	private JTextField jText;
 	
 	public Article(int id, String name, double price, int stock) {
 		this.id = id;
 		this.articleName = name;
 		this.price = price;
 		this.stock = stock;
+		this.jText = new JTextField(2);
 	}
 
 	public int getId() {
@@ -39,12 +42,16 @@ public class Article {
 		this.price = price;
 	}
 
-	public int getStock() {
+	public int getStock() {  
 		return stock;
 	}
 
 	public void setStock(int stock) {
 		this.stock -= stock;
+	}
+	
+	public JTextField getjText() {
+		return jText;
 	}
 	
 	public void restockItem() {

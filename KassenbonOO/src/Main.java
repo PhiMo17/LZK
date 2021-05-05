@@ -33,7 +33,7 @@ public class Main {
 		articles.add(new Article(7, "Cybernico 2077 PS4", 50, 20));
 	}
 
-	private static void articlesToCart(JFrame f, ArrayList<Article> articles, ArrayList<CartItem> cartItems) {
+	/*private static void articlesToCart(JFrame f, ArrayList<Article> articles, ArrayList<CartItem> cartItems) {
 		for(Article article : articles) {
 			try {
 			int input = Integer.parseInt(JOptionPane.showInputDialog(f , article.getArticleName() + "\n" + article.getPrice() + "€"));
@@ -45,6 +45,30 @@ public class Main {
 				
 			}
 		}
+	}*/
+	
+	private static void articlesToCart(JFrame f, ArrayList<Article> articles, ArrayList<CartItem> cartItems) {
+		//creates JPanel to store the information about the products
+		JPanel myPanel = new JPanel();
+		for(Article article:articles) {
+			myPanel.add(new JLabel(article.getArticleName() + "\n " + article.getPrice() + "€"));
+			myPanel.add(article.getjText());
+			myPanel.add(Box.createHorizontalStrut(5));			
+		}
+		//Displays the articleName and an input field for the user to enter the desired amount.
+		try { 
+			int result = JOptionPane.showConfirmDialog(null, myPanel, 
+		               "Please enter the desired amount.", JOptionPane.OK_CANCEL_OPTION);
+			 //If the OK Button was pressed, the desired items get transfered into the CartItem class
+			if(result == JOptionPane.OK_OPTION) {
+				for(Article article : articles) {
+				//The amount of an item is stored inside the jText variable
+					if(Integer.parseInt(article.getjText().getText())>0) {
+					cartItems.add(new CartItem(article, Integer.parseInt(article.getjText().getText())));
+					}
+				}
+			}
+		}catch(Exception e ){}
 	}
 	
 	private static void restockItems(ArrayList<Article> articles) {
