@@ -35,11 +35,15 @@ public class Main {
 
 	private static void articlesToCart(JFrame f, ArrayList<Article> articles, ArrayList<CartItem> cartItems) {
 		for(Article article : articles) {
-			int input = Integer.parseInt(JOptionPane.showInputDialog(f , article.getArticleName() + "\n" + article.getPrice() + "€"));		
+			try {
+			int input = Integer.parseInt(JOptionPane.showInputDialog(f , article.getArticleName() + "\n" + article.getPrice() + "€"));
 			if(input > 0) {
 				cartItems.add(new CartItem(article, input));				
 			}
 			article.setStock(input);
+			}catch(Exception e) {
+				
+			}
 		}
 	}
 	
