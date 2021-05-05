@@ -9,6 +9,7 @@ public class ShoppingCart {
 	private double 	totalTaxes;
 	private int 	totalItems;
 	private double 	discount;
+	private double discountPercent = 0.05;
 	
 	DecimalFormat df = new DecimalFormat(".00");
 	
@@ -16,6 +17,17 @@ public class ShoppingCart {
 		
 		this.cartItems = cartItems;
 		
+		sumTotalForAllItems(cartItems);
+		applyDiscount();
+	}
+
+	private void applyDiscount() {
+		if(this.totalItems > 3) {
+			this.discount 	= totalGross * discountPercent;
+		}
+	}
+
+	private void sumTotalForAllItems(ArrayList<CartItem> cartItems) {
 		for(CartItem items: cartItems) {
 			//Reference "https://stackoverflow.com/questions/16242733/sum-all-the-elements-java-arraylist"
 			this.totalGross += items.getGross();
@@ -23,13 +35,9 @@ public class ShoppingCart {
 			this.totalTaxes += items.getTaxes();
 			this.totalItems += items.getInCart();
 		}
-		
-		if(this.totalItems > 3) {
-			this.discount 	= totalGross * 0.05;
-		}
 	}
 	
-	public void returnBill() {
+	public void printBill() {
 		System.out.println("Article\t\t\tPrice");
 		System.out.println("_____________________________");
 		for(CartItem items: cartItems) {
@@ -44,9 +52,9 @@ public class ShoppingCart {
 		
 		if(this.totalItems > 3) {
 			System.out.println("_____________________________");
-			System.out.println("Discount %:\t\t5"
+			System.out.println("Discount %:\t\t" + discountPercent * 100
 				+ "\nDiscount:\t\t" + df.format(discount)			+ "€"
-				+ "\nGross:\t\t\t"	+ df.format(totalGross * 0.95) 	+ "€");
+				+ "\nGross:\t\t\t"	+ df.format(totalGross * (1-discountPercent)) 	+ "€");
 		}
 	}
 	
