@@ -22,6 +22,7 @@ public class ShoppingCart {
 	}
 
 	private void applyDiscount() {
+		this.discount = 0;
 		if(this.totalItems > 3) {
 			this.discount 	= totalGross * discountPercent;
 		}
@@ -34,6 +35,7 @@ public class ShoppingCart {
 			this.totalNet 	+= items.getNet();
 			this.totalTaxes += items.getTaxes();
 			this.totalItems += items.getInCart();
+			items.getArticle().reduceStock(totalItems);
 		}
 	}
 	
